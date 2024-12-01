@@ -105,5 +105,9 @@ USER root
 COPY ./deployment/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Container healthcheck
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost || exit 1
+
 # Start Supervisord
 CMD ["/usr/local/bin/entrypoint.sh"]

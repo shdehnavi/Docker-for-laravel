@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Migrate and seed database
-php "/var/www/html/artisan" migrate --force --isolated
-php "/var/www/html/artisan" db:seed --force
+php "/var/www/html/artisan" migrate --seed --force --isolated
 
 # Refresh caches
 php "/var/www/html/artisan" optimize:clear
